@@ -429,13 +429,13 @@
             };
 
            // Update the fetch URL to the Apps Script Web App URL
-fetch('https://script.google.com/macros/s/AKfycbz34R8EeYhJl_KT2TxpJ-V3zdsGHSg21Re5SdfkS0_C/exec', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(formData)
-}).then(response => {
+ fetch('https://script.google.com/macros/s/AKfycbwkiog1dCBTpAeS1vNE4Ok2fOu1OBQ5MMHai-YqWKUr4tM0BFvn9T-jXjViwDYl-o36dw/exec', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            }).then(response => {
     alert('Your sample request has been sent successfully!');
     document.getElementById("sampleForm").reset();
 }).catch(error => {

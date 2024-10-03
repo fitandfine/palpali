@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nepali Style by Palpali</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8Z902YFP4G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8Z902YFP4G');
+</script>
     <style>
         /* Reset Styles */
         * {
@@ -343,27 +352,17 @@
         </p>
     </section>
 
-    <!-- Products Section -->
-    <section id="products" class="products-section">
-        <h2>Our Products</h2>
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="images/your-product1-image.jpg" alt="Palpali Mango Pickle">
-                <h3>Palpali Spicy Mango Pickle</h3>
-                <p>A tangy and spicy pickle made from locally grown mangoes and Himalayan spices.</p>
-            </div>
-            <div class="product-card">
-                <img src="images/your-product2-image.jpg" alt="Kiwi Jam">
-                <h3>Kiwi Fruit Jam</h3>
-                <p>A sweet and zesty jam crafted from fresh New Zealand kiwis with a hint of Nepali flavors.</p>
-            </div>
-            <div class="product-card">
-                <img src="images/your-product3-image.jpg" alt="Chili Pickle">
-                <h3>Palpali Chili Pickle</h3>
-                <p>An intense and fiery chili pickle made with the finest chilies from Palpa, perfect for spice lovers.</p>
-            </div>
+   <section id="products" class="products-section">
+    <h2>Our Products</h2>
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="images/chicken-pickle.jpg" alt="Palpali Chicken Pickle">
+            <h3>Palpali Chicken Pickle</h3>
+            <p>A spicy and flavorful traditional chicken pickle from Palpa, marinated with local spices like chili, turmeric, and garlic for a bold taste.</p>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- Contact/Form Section -->
     <section id="contact" class="contact-section">
@@ -429,26 +428,20 @@
                 address: document.getElementById("address").value.trim()
             };
 
-            // Send form data to Google Sheets via Apps Script
-            fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: new URLSearchParams(formData)
-            }).then(response => {
-                alert('Your sample request has been sent successfully!');
-                document.getElementById("sampleForm").reset();
-            }).catch(error => {
-                console.error('Error:', error);
-                alert('There was an error sending your request.');
-            });
-
-            // Send data to WhatsApp (Optional)
-            const message = `New sample request:\nName: ${formData.firstName} ${formData.lastName}\nEmail: ${formData.email}\nAddress: ${formData.address}`;
-            window.open(`https://api.whatsapp.com/send?phone=+642102435027&text=${encodeURIComponent(message)}`);
-        });
+           // Update the fetch URL to the Apps Script Web App URL
+fetch('https://script.google.com/macros/s/AKfycbz34R8EeYhJl_KT2TxpJ-V3zdsGHSg21Re5SdfkS0_C/exec', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData)
+}).then(response => {
+    alert('Your sample request has been sent successfully!');
+    document.getElementById("sampleForm").reset();
+}).catch(error => {
+    console.error('Error:', error);
+    alert('There was an error sending your request.');
+});
 
         // Share Button Functionality
         document.getElementById("shareBtn").addEventListener("click", function() {

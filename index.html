@@ -429,20 +429,24 @@
             };
 
            // Update the fetch URL to the Apps Script Web App URL
- fetch('https://script.google.com/macros/s/AKfycbwkiog1dCBTpAeS1vNE4Ok2fOu1OBQ5MMHai-YqWKUr4tM0BFvn9T-jXjViwDYl-o36dw/exec', {
+ // Send form data to Google Apps Script
+            fetch('https://script.google.com/macros/s/AKfycbxLCfpzrSiznQvyLLhyxxjapLGRQS_CxUO69-5H_XL9M_kZKFgxLmbmRGXAe0rXuQ2HqA/exec', {
                 method: 'POST',
+                mode: 'no-cors',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                body: JSON.stringify(formData)
+                body: new URLSearchParams(formData)
             }).then(response => {
-    alert('Your sample request has been sent successfully!');
-    document.getElementById("sampleForm").reset();
-}).catch(error => {
-    console.error('Error:', error);
-    alert('There was an error sending your request.');
-});
+                alert('Sample request sent successfully!');
+            }).catch(error => {
+                console.error('Error:', error);
+            });
 
+            // Send data to WhatsApp
+            const message = `New sample request:\nName: ${formData.firstName} ${formData.lastName}\nEmail: ${formData.email}\nAddress: ${formData.address}`;
+            window.open(`https://api.whatsapp.com/send?phone=+64273276110&text=${encodeURIComponent(message)}`);
+        });
         // Share Button Functionality
         document.getElementById("shareBtn").addEventListener("click", function() {
             showPopup('qr-popup');
